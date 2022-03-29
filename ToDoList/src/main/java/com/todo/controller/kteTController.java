@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.todo.command.TCommand;
+import com.todo.command.UFindIdCommand;
+import com.todo.command.UFindPwCommand;
+import com.todo.share.Sharevar;
 
 
 @WebServlet("*.do")
-public class TController extends HttpServlet {
+public class kteTController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public TController() {
+    public kteTController() {
     	super();
     }
 
@@ -43,10 +46,41 @@ public class TController extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		
+		String zero = "0";
+		
+		Sharevar sharevar = new Sharevar();
+		
+		
+		
+		
 		switch(com) {
-		
-			
-		
+		case "/uFindIdForm.do":
+			viewPage = "uFindIdForm.jsp";
+			break;
+		case "/uFindId.do":
+			command = new UFindIdCommand();
+			command.execute(request, response);
+			viewPage = sharevar.findidviewpage;
+			break;
+		case "/uFindPwForm.do":
+			viewPage = "uFindPwForm.jsp";
+			break;
+		case "/uFindPw.do":
+			command = new UFindPwCommand();
+			command.execute(request, response);
+			viewPage = sharevar.findpwviewpage;
+			break;
+		case "/uFoundId.do":
+			viewPage = "uFoundId.jsp";
+			break;
+		case "/uFoundPw.do":
+			viewPage = "uFoundPw.jsp";
+			break;
+		case "/uNotFoundPw.do":
+			viewPage = "/uFindPwForm.do";
+			break;
+		default:
+			break;		
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
