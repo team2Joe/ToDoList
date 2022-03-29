@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.todo.command.TCommand;
+import com.todo.command.TListCommand;
 
 
 @WebServlet("*.do")
@@ -45,7 +46,11 @@ public class TController extends HttpServlet {
 		
 		switch(com) {
 		
-			
+		case("/list.do"):
+			command = new TListCommand();
+			command.execute(request, response);
+			viewPage = "list.jsp";
+			break;
 		
 		}
 		
