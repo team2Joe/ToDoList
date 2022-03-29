@@ -2,7 +2,7 @@ package com.todo.dto;
 
 public class TDto {
 	
-	private int order;
+	private int cid;
 	private String uid;
 	private String cname;
 	private String content;
@@ -13,9 +13,9 @@ public class TDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public TDto(int order, String uid, String cname, String content, int check, int importance) {
+	public TDto(int cid, String uid, String cname, String content, int check, int importance) {
 		super();
-		this.order = order;
+		this.cid = cid;
 		this.uid = uid;
 		this.cname = cname;
 		this.content = content;
@@ -23,12 +23,14 @@ public class TDto {
 		this.importance = importance;
 	}
 
-	public int getOrder() {
-		return order;
+
+
+	public int getCid() {
+		return cid;
 	}
 
-	public void setOrder(int order) {
-		this.order = order;
+	public void setCid(int cid) {
+		this.cid = cid;
 	}
 
 	public String getUid() {
