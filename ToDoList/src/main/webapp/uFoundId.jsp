@@ -15,6 +15,7 @@
 	<h1> <%=ment %></h1>
 		<h3> ID = ${uid}</h3>
 		 
+		 
 
 </body>
 </html>

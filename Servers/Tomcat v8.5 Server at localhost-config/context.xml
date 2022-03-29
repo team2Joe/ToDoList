@@ -37,7 +37,7 @@
 		username = "root"
 		password = "qwer1234"
 		driverClassName = "com.mysql.cj.jdbc.Driver"
-		url = "jdbc:mysql://192.168.150.246:3306/todolist?serverTimezone=Asia/Seoul&amp;characterEncoding=utf8&amp;useSSL=false"
+		url = "jdbc:mysql://localhost:3306/todolist?serverTimezone=Asia/Seoul&amp;characterEncoding=utf8&amp;useSSL=false"
 	
 	/>
 	
