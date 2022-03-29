@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.todo.command.TCommand;
 import com.todo.command.ULoginCheckCommand;
+import com.todo.command.URegisterCheckCommand;
 
 
 @WebServlet("*.do")
@@ -35,7 +37,7 @@ public class Uyoung_TController extends HttpServlet {
 	public void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
-		
+		HttpSession session = request.getSession();
 		TCommand command = null;
 		
 		String viewPage = null;
@@ -43,25 +45,44 @@ public class Uyoung_TController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
-		
-		//log in 페이지.
+		//mainPage
 		switch(com) {
-		case("/loginCheck.do"):
-			command = new ULoginCheckCommand();
-			command.execute(request, response);
+		case("/main.do"):
+			viewPage = "mainPage.jsp";
 			break;
 		
+		//log in 페이지로 이동.
+		case("/login.do"):
+			viewPage = "login.jsp";
+			break;
+		
+		//login check!!!
+		case("/loginheck.do"):
+			command = new ULoginCheckCommand();
+			System.out.println("hello");
+			command.execute(request, response);
+			viewPage=(String)request.getAttribute("logincheck");
+			break;
 		
 		//Sign up page 이동
-		case("/regiserform.do"):
-		viewPage = "registerform.jsp"	;
-		
+		case("/registerform.do"):
+			viewPage = "registerForm.jsp";
 			break;
+		
+		//회원가입 체크페이지.
+		case("/registercheck.do"):
+			command = new URegisterCheckCommand();
+			command.execute(request, response);
+			viewPage = "login.do";
+		break;
+		
+		
+		
+		
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
-		
 	}
 
 }
