@@ -23,6 +23,9 @@ function logincheck() {
 	}
 	 form.submit()
 }
+function registerform() {
+	location.href = "registerform.do"
+}
 </script>
 </head>
 <body>
@@ -37,23 +40,23 @@ function logincheck() {
 			</tr>
 			
 			<tr><td align="right">PW</td>
-				<td><input type="text" size="30" name="upassword"></td>
+				<td><input type="password" size="30" name="upassword"></td>
 			</tr>
 			
 			<tr>
 				<td></td>
 				<td align="center">
 				<input type="button" value="Sign in" onclick="logincheck()">
-				<a href="registerform.do">Sign up</a>
+				<input type="button" value="Sign up" onclick="registerform()">
 				</td>
 			</tr>
 			
 			<tr>
-				<td align="center" colspan="2">forgot ID</td>
+				<td align="center" colspan="2"><a>forgot ID</a></td>
 			</tr>
 			
 			<tr>
-				<td align="center" colspan="2">forgot PASSWORD</td>
+				<td align="center" colspan="2"><a>forgot PASSWORD</a></td>
 			</tr>
 		
 		</table>
