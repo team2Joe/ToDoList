@@ -25,8 +25,9 @@
 				<c:forEach items="${list }" var="dto">
 					<tr>
 						<td><input type="checkbox" value="${dto.content }"></td>
-						<label><td><input type="text" name="check" value="${dto.content }"></td></label>
+						<td><input type="text" name="content" value="${dto.content }"></td>
 						<td> <button><a href="downward.do">∨</a></button> <button><a href="downward.do">∧</a></button></td>
+						<td><a href="modifyForm.do?uid=${dto.uid }">수정</a></td>
 						<td><a href="delete.do?order=${dto.uid }"><button>X</button></a></td>
 					</tr>
 				</c:forEach>

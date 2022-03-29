@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.todo.command.TAddCommand;
 import com.todo.command.TCommand;
+import com.todo.command.TDeleteCommand;
 import com.todo.command.TListCommand;
+import com.todo.command.TModifyCommand;
 
 
 @WebServlet("*.do")
@@ -46,12 +49,34 @@ public class TController extends HttpServlet {
 		
 		switch(com) {
 		
+		
 		case("/list.do"):
 			command = new TListCommand();
 			command.execute(request, response);
 			viewPage = "list.jsp";
 			break;
+			
+		case("/add.do"):
+			command = new TAddCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
+			break;
+			
+		case("/modifyForm.do"):
+			command = TContentCommand();
+			command.execute(request, response);
+			
+			viewPage = "modifyForm.jsp";
 		
+		case("/modify.do"):
+			command = new TModifyCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
+			break;
+		case("/delete.do"):
+			command = new TDeleteCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

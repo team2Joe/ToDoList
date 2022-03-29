@@ -29,7 +29,8 @@ public class TDao {
 		
 	}
 	
-	public ArrayList<TDto> list(String suid){ // 밑에 uid랑 헷갈려서 앞에 s붙임
+	
+	public ArrayList<TDto> list(){ // 밑에 uid랑 헷갈려서 앞에 s붙임
 		ArrayList<TDto> dtos = new ArrayList<TDto>();
 		
 		Connection conn = null;
@@ -38,8 +39,7 @@ public class TDao {
 		
 		try {
 			conn = dataSource.getConnection();
-			String query = "select * from drawup where uid = ?";
-			stmt.setString(1, suid);
+			String query = "select * from drawup";
 			stmt = conn.prepareStatement(query);
 			rs = stmt.executeQuery();
 			
@@ -54,10 +54,7 @@ public class TDao {
 				TDto dto = new TDto(order, uid, cname, content, check, importance);
 				
 				dtos.add(dto);
-				
 			}
-			
-			
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -71,11 +68,40 @@ public class TDao {
 			}
 
 		}
-		
-		
-		
 		return dtos;
 	}
+	
+	public void modify(String uid, String content) {
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try{
+			conn = dataSource.getConnection();
+			String query = "update drawup set content = ? where uid = ?";
+			stmt = conn.prepareStatement(query);
+			
+			stmt.setString(1, content);
+			stmt.setString(2, uid);
+			
+			stmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally{
+			try {
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+		}
+
+	}
+	
 	
 	
 }
