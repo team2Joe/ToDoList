@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.todo.command.TAddCommand;
 import com.todo.command.TCommand;
+import com.todo.command.TContentCommand;
 import com.todo.command.TDeleteCommand;
 import com.todo.command.TListCommand;
 import com.todo.command.TModifyCommand;
@@ -62,21 +63,23 @@ public class TController extends HttpServlet {
 			viewPage = "list.do";
 			break;
 			
-		case("/modifyForm.do"):
-			command = TContentCommand();
+		case("/contentView.do"):
+			command = new TContentCommand();
 			command.execute(request, response);
+			viewPage = "contentView.jsp";
+			break;
 			
-			viewPage = "modifyForm.jsp";
-		
 		case("/modify.do"):
 			command = new TModifyCommand();
 			command.execute(request, response);
 			viewPage = "list.do";
 			break;
+			
 		case("/delete.do"):
 			command = new TDeleteCommand();
 			command.execute(request, response);
 			viewPage = "list.do";
+			break;
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

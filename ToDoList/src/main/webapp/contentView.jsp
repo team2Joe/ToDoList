@@ -8,7 +8,13 @@
 </head>
 <body>
 	
-	<input type="text" name="content" value="${ }
+	<form action="modify.do">
+		<input type="text" name="content" value="${contentView.content }">
+		<input type="submit" value="수정">
+		<a href="list.do">취소</a>
+	</form>
 	
+	
+		
 </body>
 </html>

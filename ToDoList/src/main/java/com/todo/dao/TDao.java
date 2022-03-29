@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.todo.dto.TDto;
@@ -30,7 +31,7 @@ public class TDao {
 	}
 	
 	
-	public ArrayList<TDto> list(){ // 밑에 uid랑 헷갈려서 앞에 s붙임
+	public ArrayList<TDto> list(String suid){ // 밑에 uid랑 헷갈려서 앞에 s붙임
 		ArrayList<TDto> dtos = new ArrayList<TDto>();
 		
 		Connection conn = null;
@@ -39,8 +40,11 @@ public class TDao {
 		
 		try {
 			conn = dataSource.getConnection();
-			String query = "select * from drawup";
+			String query = "select * from drawup where uid = 'jennie12'";
+			
 			stmt = conn.prepareStatement(query);
+			
+			//stmt.setString(1, suid);
 			rs = stmt.executeQuery();
 			
 			while(rs.next()) {
@@ -78,7 +82,7 @@ public class TDao {
 		
 		try{
 			conn = dataSource.getConnection();
-			String query = "update drawup set content = ? where uid = ?";
+			String query = "update drawup set content = ? where order = ? and uid = 'jennie12'";
 			stmt = conn.prepareStatement(query);
 			
 			stmt.setString(1, content);
@@ -100,6 +104,90 @@ public class TDao {
 			
 		}
 
+	}
+	
+	public TDto contentView(String suid, String sorder) { // 헷갈리니까 앞에 s붙
+		TDto dto = null;
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String query = "select content from drawup where uid = 'jennie12' and order = ?";
+		
+			stmt = conn.prepareStatement(query);
+			
+			//stmt.setString(1, suid);
+			stmt.setInt(1, Integer.parseInt(sorder));
+
+			
+			rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				int order = rs.getInt("order");
+				String uid = rs.getString("uid");
+				String cname = rs.getString("cname");
+				String content = rs.getString("content");
+				int check = rs.getInt("check");
+				int importance = rs.getInt("importance");
+
+				dto = new TDto(order, uid, cname, content, check, importance);
+			}
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return dto;
+		
+	}
+	
+	public void delete(String suid, String sorder) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			String query = "delete from drawup where uid = 'jennie12' and order =?";
+			
+			stmt = conn.prepareStatement(query);
+			
+			stmt.setString(1, suid);
+			stmt.setInt(2, Integer.parseInt(sorder));
+			
+			stmt.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			try {
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		
 	}
 	
 	

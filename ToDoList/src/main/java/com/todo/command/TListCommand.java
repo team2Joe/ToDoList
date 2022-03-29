@@ -18,9 +18,10 @@ public class TListCommand implements TCommand {
 		ArrayList<TDto> dtos = new ArrayList<TDto>();
 		TDao dao = new TDao();
 		
-		dtos = dao.list();
+		dtos = dao.list(uid);
 		
 		request.setAttribute("list", dtos);
+		
 	}
 
 }
