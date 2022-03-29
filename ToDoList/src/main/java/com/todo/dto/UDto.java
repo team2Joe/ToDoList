@@ -6,17 +6,19 @@ public class UDto {
 	private String upassword;
 	private String uname;
 	private String uphone;
+	private String uquestion;
 	private String uanswer;
 	
 	public UDto() {
 	}
 
-	public UDto(String uid, String upassword, String uname, String uphone, String uanswer) {
+	public UDto(String uid, String upassword, String uname, String uphone, String uquestion, String uanswer) {
 		super();
 		this.uid = uid;
 		this.upassword = upassword;
 		this.uname = uname;
 		this.uphone = uphone;
+		this.uquestion = uquestion;
 		this.uanswer = uanswer;
 	}
 
@@ -58,6 +60,14 @@ public class UDto {
 
 	public void setUanswer(String uanswer) {
 		this.uanswer = uanswer;
+	}
+
+	public String getUquestion() {
+		return uquestion;
+	}
+
+	public void setUquestion(String uquestion) {
+		this.uquestion = uquestion;
 	}
 	
 	
