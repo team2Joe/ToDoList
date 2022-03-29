@@ -12,12 +12,12 @@ public class TContentCommand implements TCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		String uid = request.getParameter("uid");
-		String order = request.getParameter("order");
+		String cid = request.getParameter("cid");
 		
 		TDto dto = new TDto();
 		TDao dao = new TDao();
 		
-		dto = dao.contentView(uid, order);
+		dto = dao.contentView(uid, cid);
 
 		request.setAttribute("contentView", dto);
 	}

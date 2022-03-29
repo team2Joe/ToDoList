@@ -48,14 +48,14 @@ public class TDao {
 			rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				int order = rs.getInt("order");
+				int cid = rs.getInt("cid");
 				String uid = rs.getString("uid");
 				String cname = rs.getString("cname");
 				String content = rs.getString("content");
 				int check = rs.getInt("check");
 				int importance = rs.getInt("importance");
 				
-				TDto dto = new TDto(order, uid, cname, content, check, importance);
+				TDto dto = new TDto(cid, uid, cname, content, check, importance);
 				
 				dtos.add(dto);
 			}
@@ -75,17 +75,17 @@ public class TDao {
 		return dtos;
 	}
 	
-	public void modify(String uid, String content) {
+	public void modify(String uid, String cid) {
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
 		try{
 			conn = dataSource.getConnection();
-			String query = "update drawup set content = ? where order = ? and uid = ?";
+			String query = "update drawup set content = ? where cid = ? and uid = ?";
 			stmt = conn.prepareStatement(query);
 			
-			stmt.setString(1, content);
+			stmt.setInt(1, Integer.parseInt(cid));
 			stmt.setString(2, uid);
 			
 			stmt.executeUpdate();
@@ -106,7 +106,7 @@ public class TDao {
 
 	}
 	
-	public TDto contentView(String suid, String sorder) { // 헷갈리니까 앞에 s붙
+	public TDto contentView(String suid, String scid) { // 헷갈리니까 앞에 s붙
 		TDto dto = null;
 		
 		Connection conn = null;
@@ -115,28 +115,26 @@ public class TDao {
 		
 		try {
 			conn = dataSource.getConnection();
-			String query = "select content from drawup where uid = ? and order = ?";
+			String query = "select content from drawup where uid = ? and cid = ?";
 		
 			stmt = conn.prepareStatement(query);
 			
 			stmt.setString(1, suid);
-			stmt.setInt(2, Integer.parseInt(sorder));
-
+			stmt.setInt(2, Integer.parseInt(scid));
 			
 			rs = stmt.executeQuery();
 			
 			if(rs.next()) {
 				
-				int order = rs.getInt("order");
+				int cid = rs.getInt("cid");
 				String uid = rs.getString("uid");
 				String cname = rs.getString("cname");
 				String content = rs.getString("content");
 				int check = rs.getInt("check");
 				int importance = rs.getInt("importance");
 
-				dto = new TDto(order, uid, cname, content, check, importance);
+				dto = new TDto(cid, uid, cname, content, check, importance);
 			}
-			
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -150,28 +148,24 @@ public class TDao {
 				e.printStackTrace();
 			}
 		}
-		
-		
 		return dto;
-		
 	}
 	
-	public void delete(String suid, String sorder) {
+	public void delete(String suid, String cid) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
 		try {
 			conn = dataSource.getConnection();
 			
-			String query = "delete from drawup where uid = ? and order =?";
+			String query = "delete from drawup where uid = ? and cid =?";
 			
 			stmt = conn.prepareStatement(query);
 			
 			stmt.setString(1, suid);
-			stmt.setInt(2, Integer.parseInt(sorder));
+			stmt.setInt(2, Integer.parseInt(cid));
 			
 			stmt.executeUpdate();
-			
 			
 		}catch(Exception e) {
 			e.printStackTrace();

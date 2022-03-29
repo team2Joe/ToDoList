@@ -11,11 +11,11 @@ public class TModifyCommand implements TCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		String uid = request.getParameter("uid");
-		String content = request.getParameter("content");
+		String cid = request.getParameter("cid");
 		
 		TDao dao = new TDao();
 		
-		dao.modify(uid, content);
+		dao.modify(uid, cid);
 
 	}
 

@@ -12,11 +12,11 @@ public class TDeleteCommand implements TCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		String uid = request.getParameter("uid");
-		String order = request.getParameter("order");
+		String cid = request.getParameter("cid");
 		
 		TDao dao = new TDao();
 		
-		dao.delete(uid, order);
+		dao.delete(uid, cid);
 		
 	}
 
