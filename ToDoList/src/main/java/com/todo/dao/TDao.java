@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.todo.dto.TDto;
@@ -31,7 +30,7 @@ public class TDao {
 	}
 	
 	
-	public ArrayList<TDto> list(String suid){ // 밑에 uid랑 헷갈려서 앞에 s붙임
+	public ArrayList<TDto> list(String suid){ // 諛묒뿉 uid�옉 �뿷媛덈젮�꽌 �븵�뿉 s遺숈엫
 		ArrayList<TDto> dtos = new ArrayList<TDto>();
 		
 		Connection conn = null;
@@ -56,7 +55,8 @@ public class TDao {
 				int importance = rs.getInt("importance");
 				
 				TDto dto = new TDto(cid, uid, cname, content, check, importance);
-				
+			
+			
 				dtos.add(dto);
 			}
 			
@@ -106,7 +106,7 @@ public class TDao {
 
 	}
 	
-	public TDto contentView(String suid, String scid) { // 헷갈리니까 앞에 s붙
+	public TDto contentView(String suid, String scid) { // �뿷媛덈━�땲源� �븵�뿉 s遺�
 		TDto dto = null;
 		
 		Connection conn = null;
@@ -184,6 +184,67 @@ public class TDao {
 		
 	}
 	
+	public ArrayList<TDto> search(String sel, String search){
+		ArrayList<TDto> dtos = new ArrayList<TDto>();
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		String query = "select * from drawup";
+		String where = "where "+ sel + " like '" + search + "'";
+
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			
+			if(sel != "전체" || search == null) {
+				query += where;
+			}
+			
+			stmt = conn.prepareStatement(query);
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				int cid = rs.getInt("cid");
+				String uid = rs.getString("uid");
+				String cname = rs.getString("cname");
+				String content = rs.getString("content");
+				int check = rs.getInt("check");
+				int importance = rs.getInt("importance");
+				
+				TDto dto = new TDto(cid, uid, cname, content, check, importance);
+			
+				dtos.add(dto);
+				
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return dtos;
+	}
+	
+	public void upward(String suid, String scid) {
+		
+	}
+	
+	public void downward(String suid, String scid) {
+		
+	}
 	
 	
 }
