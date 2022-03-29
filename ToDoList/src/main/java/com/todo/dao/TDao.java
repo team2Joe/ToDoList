@@ -40,11 +40,11 @@ public class TDao {
 		
 		try {
 			conn = dataSource.getConnection();
-			String query = "select * from drawup where uid = 'jennie12'";
+			String query = "select * from drawup where uid = ?";
 			
 			stmt = conn.prepareStatement(query);
 			
-			//stmt.setString(1, suid);
+			stmt.setString(1, suid);
 			rs = stmt.executeQuery();
 			
 			while(rs.next()) {
@@ -82,7 +82,7 @@ public class TDao {
 		
 		try{
 			conn = dataSource.getConnection();
-			String query = "update drawup set content = ? where order = ? and uid = 'jennie12'";
+			String query = "update drawup set content = ? where order = ? and uid = ?";
 			stmt = conn.prepareStatement(query);
 			
 			stmt.setString(1, content);
@@ -115,12 +115,12 @@ public class TDao {
 		
 		try {
 			conn = dataSource.getConnection();
-			String query = "select content from drawup where uid = 'jennie12' and order = ?";
+			String query = "select content from drawup where uid = ? and order = ?";
 		
 			stmt = conn.prepareStatement(query);
 			
-			//stmt.setString(1, suid);
-			stmt.setInt(1, Integer.parseInt(sorder));
+			stmt.setString(1, suid);
+			stmt.setInt(2, Integer.parseInt(sorder));
 
 			
 			rs = stmt.executeQuery();
@@ -163,7 +163,7 @@ public class TDao {
 		try {
 			conn = dataSource.getConnection();
 			
-			String query = "delete from drawup where uid = 'jennie12' and order =?";
+			String query = "delete from drawup where uid = ? and order =?";
 			
 			stmt = conn.prepareStatement(query);
 			

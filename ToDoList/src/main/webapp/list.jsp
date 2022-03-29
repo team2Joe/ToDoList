@@ -28,7 +28,7 @@
 						<td><input type="text" name="content" value="${dto.content }"></td>
 						<td> <button><a href="downward.do">∨</a></button> <button><a href="downward.do">∧</a></button></td>
 						<td><a href="contentView.do?uid=${dto.uid }&order=${dto.order }">수정</a></td>
-						<td><a href="delete.do?uid=${dto.uid }&order=${dto.uid }"><button>X</button></a></td>
+						<td><a href="delete.do?uid=${dto.uid }&order=${dto.order }"><button>X</button></a></td>
 					</tr>
 				</c:forEach>
 			</table>

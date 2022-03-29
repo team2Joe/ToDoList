@@ -13,7 +13,7 @@ public class TListCommand implements TCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		String uid = request.getParameter("uid");
+		String uid = "jennie12";  //request.getParameter("uid");
 		
 		ArrayList<TDto> dtos = new ArrayList<TDto>();
 		TDao dao = new TDao();
