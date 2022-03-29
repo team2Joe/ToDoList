@@ -22,11 +22,13 @@ public class TController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet");
+		actionDo(request, response);
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost");
+		actionDo(request, response);
 	}
 	
 	public void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +42,6 @@ public class TController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
-		
 		
 		switch(com) {
 		
