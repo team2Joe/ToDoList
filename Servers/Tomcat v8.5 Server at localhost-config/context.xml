@@ -26,7 +26,6 @@
     <Manager pathname="" />
     -->
       
-      
     	<Resource
 		
 		name = "jdbc/todolist" 
