@@ -5,7 +5,7 @@ import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.todo.dao.kteUDao;
+import com.todo.dao.UDao;
 import com.todo.share.Sharevar;
 
 public class UFindIdCommand implements TCommand {
@@ -17,7 +17,7 @@ public class UFindIdCommand implements TCommand {
 		
 		Sharevar sharevar = new Sharevar();
 		
-		kteUDao dao = new kteUDao();
+		UDao dao = new UDao();
 		
 		String uname = request.getParameter("uname");
 		String uphone1 = request.getParameter("uphone1");

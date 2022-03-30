@@ -3,7 +3,7 @@ package com.todo.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.todo.dao.kteUDao;
+import com.todo.dao.UDao;
 import com.todo.share.Sharevar;
 
 public class UFindPwCommand implements TCommand {
@@ -11,7 +11,7 @@ public class UFindPwCommand implements TCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		kteUDao dao = new kteUDao();
+		UDao dao = new UDao();
 		
 		String uname = request.getParameter("uname");
 		String uphone1 = request.getParameter("uphone1");

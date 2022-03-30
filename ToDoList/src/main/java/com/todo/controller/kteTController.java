@@ -15,6 +15,10 @@ import com.todo.command.TCommand;
 // HEAD:ToDoList/src/main/java/com/todo/controller/kteTController.java
 import com.todo.command.UFindIdCommand;
 import com.todo.command.UFindPwCommand;
+import com.todo.command.ULoginCheckCommand;
+import com.todo.command.UModifyCommand;
+import com.todo.command.UProfileViewCommand;
+import com.todo.command.URegisterCheckCommand;
 import com.todo.share.Sharevar;
 
 import com.todo.command.TContentCommand;
@@ -140,6 +144,50 @@ public class kteTController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "list.do";
 			break;
+		case("/main.do"):
+			viewPage = "mainPage.jsp";
+			break;
+		
+		//log in 페이지로 이동.
+		case("/login.do"):
+			viewPage = "login.jsp";
+			break;
+		
+		//login check!!!
+		case("/loginheck.do"):
+			command = new ULoginCheckCommand();
+			System.out.println("hello");
+			command.execute(request, response);
+			viewPage=(String)request.getAttribute("logincheck");
+			break;
+		
+		//Sign up page 이동
+		case("/registerform.do"):
+			viewPage = "registerForm.jsp";
+			break;
+		
+		//회원가입 체크페이지.
+		case("/registercheck.do"):
+			command = new URegisterCheckCommand();
+			command.execute(request, response);
+			viewPage = "login.do";
+			
+		case("/uProfileview.do"):
+			command = new UProfileViewCommand();
+			command.execute(request, response);
+			viewPage = "uProfileView.jsp";
+		break;
+		case("/uModify.do"): 
+			command = new UModifyCommand();
+			command.execute(request, response);
+			viewPage ="list.do";
+		break;
+	
+		case("/uModifyForm.do"): 
+			command = new UModifyCommand();
+		command.execute(request, response);
+		viewPage ="uModifyForm.jsp";
+		break;
 		
 //c8e32276006d141219f8158c011434ec6b9c8e41:ToDoList/src/main/java/com/todo/controller/TController.java
 		
