@@ -6,12 +6,8 @@
 
 ### Eclipse ###
 ./Servers
-./Servers
-./Servers/
+Servers/*
 
-../Servers
-../Servers
-../Servers/
 
 .metadata
 bin/
