@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.todo.dao.UDao;
-import com.todo.dao.Uyoung_UDao;
 
 public class URegisterCheckCommand implements TCommand {
 

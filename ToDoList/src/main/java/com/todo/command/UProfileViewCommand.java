@@ -5,9 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.mysql.cj.Session;
-import com.todo.dao.AhUDao;
 import com.todo.dao.UDao;
-import com.todo.dto.AhUDto;
 import com.todo.dto.UDto;
 
 public class UProfileViewCommand implements TCommand {

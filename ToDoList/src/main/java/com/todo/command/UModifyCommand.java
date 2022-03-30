@@ -3,8 +3,7 @@ package com.todo.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.javalec.bbs.dao.BDao;
-import com.todo.dao.AhUDao;
+
 import com.todo.dao.UDao;
 
 public class UModifyCommand implements TCommand {
