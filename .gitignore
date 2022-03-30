@@ -5,10 +5,13 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse,macos,windows
 
 ### Eclipse ###
-Servers
-/Servers
-Servers/
+./Servers
+./Servers
+./Servers/
 
+../Servers
+../Servers
+../Servers/
 
 .metadata
 bin/
