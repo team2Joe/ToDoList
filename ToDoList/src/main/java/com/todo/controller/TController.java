@@ -9,7 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.todo.command.TAddCommand;
 import com.todo.command.TCommand;
+import com.todo.command.TContentCommand;
+import com.todo.command.TDeleteCommand;
+import com.todo.command.TDownwardCommand;
+import com.todo.command.TListCommand;
+import com.todo.command.TModifyCommand;
+import com.todo.command.TSearchCommand;
+import com.todo.command.TUpwardCommand;
 
 
 @WebServlet("*.do")
@@ -45,10 +53,58 @@ public class TController extends HttpServlet {
 		
 		switch(com) {
 		
+		
+		case("/list.do"):
+			command = new TListCommand();
+			command.execute(request, response);
+			viewPage = "list.jsp";
+			break;
 			
+		case("/add.do"):
+			command = new TAddCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
+			break;
+			
+		case("/contentView.do"):
+			command = new TContentCommand();
+			command.execute(request, response);
+			viewPage = "contentView.jsp";
+			break;
+			
+		case("/modify.do"):
+			command = new TModifyCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
+			break;
+			
+		case("/delete.do"):
+			command = new TDeleteCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
+			break;
+			
+		case("/search.do"):
+			command = new TSearchCommand();
+			command.execute(request, response);
+			viewPage = "list.jsp";
+			break;
+			
+		case("/upward.do"):
+			command = new TUpwardCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
+			break;
 		
+		case("/downward.do"):
+			command = new TDownwardCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
+			break;
+		
+		
+			
 		}
-		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 		
@@ -82,7 +138,7 @@ public class TController extends HttpServlet {
 //case /uFindPw.do(hid)
 //case /uFound.do
 
-//출력 페이지들
+//異쒕젰 �럹�씠吏��뱾
 //
 //registerForm.jsp
 //main.jsp
