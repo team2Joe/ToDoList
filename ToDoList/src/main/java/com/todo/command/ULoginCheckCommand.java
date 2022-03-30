@@ -25,9 +25,18 @@ public class ULoginCheckCommand implements TCommand {
 		int logincheck = udao.loginCheck(uid, upassword);
 		
 		String viewPage = logincheck == 1 ? "list.do":"login.do";
+		
+		HttpSession session = request.getSession(); 
+		
+		
+		session.setAttribute("uid", uid);
+		
+		
 		System.out.println(logincheck);
 		
 		System.out.println(viewPage);
+		
+		
 		request.setAttribute("logincheck", viewPage);
 		
 	}

@@ -9,13 +9,17 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
+		<div align="right">
+			<a href = "uProfileview.do">회원 정보 보기</a>
+		</div>
+		<br>
 		<div align="center">
 			<form action="search.do">
 					검색 : 
 						<select name = "cname">
 							<option value="all">전체</option>
-							<option value="health">건강</option>
-							<option value="exercise">운동</option>
+							<option value="건강">건강</option>
+							<option value="운동">운동</option>
 						</select>
 						<input type="text" name="search" size="20">
 						<input type="submit" value="검색">
@@ -23,7 +27,7 @@
 				<br>
 				<a href="uLogout.do"><button>로그아웃</button></a>
 				<br>
-				<a href="add.do?uid=${dto.uid }"><button>할 일 추가</button></a>
+				<a href="addView.do"><button>할 일 추가</button></a>
 		</div>
 		<br>
 		<br>

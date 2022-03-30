@@ -52,11 +52,11 @@ function registerform() {
 			</tr>
 			
 			<tr>
-				<td align="center" colspan="2"><a>forgot ID</a></td>
+				<td align="center" colspan="2"><a href = "uFindIdForm.do">forgot ID</a></td>
 			</tr>
 			
 			<tr>
-				<td align="center" colspan="2"><a>forgot PASSWORD</a></td>
+				<td align="center" colspan="2"><a href = "uFindPwForm.do">forgot PASSWORD</a></td>
 			</tr>
 		
 		</table>

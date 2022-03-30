@@ -83,12 +83,12 @@ function cancel() {
 			<tr>
 				<td align="right">계정찾기 질문</td>
 				<td><select name="uquestion">
-					<option value="q1">본인의 고향은?</option>
-					<option value="q2">가장 기억에 남는 선생님 이름은?</option>
-					<option value="q3">본인 어머니의 이름은?</option>
-					<option value="q4">본인의 좌우명은?</option>
-					<option value="q5">어릴 적 가장 기억의 남는 장소는?</option>
-					<option value="q6">가장 친한 친구의 이름은?</option>
+					<option value="본인의 고향은?">본인의 고향은?</option>
+					<option value="가장 기억에 남는 선생님 이름은?">가장 기억에 남는 선생님 이름은?</option>
+					<option value="본인 어머니의 이름은?">본인 어머니의 이름은?</option>
+					<option value="본인의 좌우명은?">본인의 좌우명은?</option>
+					<option value="어릴 적 가장 기억의 남는 장소는?">어릴 적 가장 기억의 남는 장소는?</option>
+					<option value="가장 친한 친구의 이름은?">가장 친한 친구의 이름은?</option>
 				</select></td>
 			</tr>
 			

@@ -22,6 +22,8 @@ public class TDto {
 		this.check = check;
 		this.importance = importance;
 	}
+	
+	
 
 
 

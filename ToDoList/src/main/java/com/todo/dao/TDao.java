@@ -191,7 +191,8 @@ public class TDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		String defaultQuery = "select * from drawup where content like '%" + search + "%'";
+		
+		String defaultQuery = "select * from drawup where cname = '" + scname +"' and content like '%" + search + "%'";
 		String query = null;
 		
 		try {
@@ -235,6 +236,43 @@ public class TDao {
 		}
 		
 		return dtos;
+	}
+	
+	
+	public TDto add(String cname, String content) {
+		TDto dto = null;
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String query = "insert into drawup(cname, content) values(?, ?)";
+			stmt = conn.prepareStatement(query);
+			
+			stmt.setString(1, cname);
+			stmt.setString(2, content);
+			
+			stmt.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			
+			try {
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		
+		return dto;
 	}
 	
 	public void upward(String suid, String scid) {

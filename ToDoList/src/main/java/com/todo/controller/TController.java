@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.todo.command.TAddCommand;
 import com.todo.command.TCommand;
@@ -53,6 +54,7 @@ public class TController extends HttpServlet {
 	public void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
 		
 		TCommand command = null;
 		
@@ -100,6 +102,10 @@ public class TController extends HttpServlet {
 			command = new TListCommand();
 			command.execute(request, response);
 			viewPage = "list.jsp";
+			break;
+			
+		case("/addView.do"):
+			viewPage = "addView.jsp";
 			break;
 			
 		case("/add.do"):
@@ -169,7 +175,7 @@ public class TController extends HttpServlet {
 		case("/registercheck.do"):
 			command = new URegisterCheckCommand();
 			command.execute(request, response);
-			viewPage = "login.do";
+			viewPage = "list.do";
 			
 		case("/uProfileview.do"):
 			command = new UProfileViewCommand();
