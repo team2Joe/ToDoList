@@ -23,11 +23,15 @@
 		<div align="center">
 			<table >
 				<c:forEach items="${list }" var="dto">
+					<a href="add.do?uid=${dto.uid }"><button>할 일 추가</button></a>
 					<tr>
 						<td><input type="checkbox" value="${dto.content }"></td>
 						<td><input type="text" name="content" value="${dto.content }"></td>
+						
 						<td> <button><a href="downward.do?uid=${dto.uid }&cid=${dto.cid }">∨</a></button> <button><a href="upward.do?uid=${dto.uid }&cid=${dto.cid }">∧</a></button></td>
-						<td><a href="contentView.do?uid=${dto.uid }&cid=${dto.cid }">수정</a></td>
+						<td>
+							<a href="contentView.do?uid=${dto.uid }&cid=${dto.cid }">수정</a>
+						</td>
 						<td><a href="delete.do?uid=${dto.uid }&cid=${dto.cid }"><button>X</button></a></td>
 					</tr>
 				</c:forEach>

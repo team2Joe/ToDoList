@@ -240,11 +240,26 @@ public class TDao {
 	
 	public void upward(String suid, String scid) {
 		
+		
 	}
+	
 	
 	public void downward(String suid, String scid) {
 		
+
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
