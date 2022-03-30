@@ -22,7 +22,8 @@ public class UProfileViewCommand implements TCommand {
 		UDao dao = new UDao();
 		UDto dto = dao.uProfileView(uid);
 		
-		request.setAttribute("uProfileView", dto);
+		request.setAttribute("userinfo", dto);
+		
 	}
 
 }

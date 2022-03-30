@@ -32,11 +32,6 @@ public class ULoginCheckCommand implements TCommand {
 		session.setAttribute("uid", uid);
 		
 		
-		System.out.println(logincheck);
-		
-		System.out.println(viewPage);
-		
-		
 		request.setAttribute("logincheck", viewPage);
 		
 	}

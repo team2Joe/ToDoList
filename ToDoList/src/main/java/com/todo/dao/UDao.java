@@ -110,9 +110,9 @@ public class UDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query ="select * from todolist where uid = ?";
+			String query ="select * from user where uid = ?";
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setInt(1, Integer.parseInt(sbId));
+			preparedStatement.setString(1, (sbId));
 			resultSet =preparedStatement.executeQuery(); //��ȸ
 			
 			
@@ -125,7 +125,7 @@ public class UDao {
 				String uanswer = resultSet.getString("uanswer");
 			
 				
-				dto = new UDto(uid, uname, upassword, uphone, uquestion, uanswer);
+				dto = new UDto(uid,upassword , uname , uphone, uquestion, uanswer);
 				
 			}			
 			

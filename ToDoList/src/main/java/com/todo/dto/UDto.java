@@ -2,7 +2,7 @@ package com.todo.dto;
 
 public class UDto {
 	
-	private String uid;
+	public String uid;
 	private String upassword;
 	private String uname;
 	private String uphone;

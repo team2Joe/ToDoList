@@ -239,7 +239,7 @@ public class TDao {
 	}
 	
 	
-	public TDto add(String cname, String content) {
+	public TDto add(String uid, String cname, String content) {
 		TDto dto = null;
 		
 		Connection conn = null;
@@ -247,11 +247,12 @@ public class TDao {
 		
 		try {
 			conn = dataSource.getConnection();
-			String query = "insert into drawup(cname, content) values(?, ?)";
+			String query = "insert into drawup(uid, cname, content) values(?, ?, ?)";
 			stmt = conn.prepareStatement(query);
 			
-			stmt.setString(1, cname);
-			stmt.setString(2, content);
+			stmt.setString(1, uid);
+			stmt.setString(2, cname);
+			stmt.setString(3, content);
 			
 			stmt.executeUpdate();
 			

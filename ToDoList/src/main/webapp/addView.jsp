@@ -9,7 +9,7 @@
 <body>
 	<h2>Add ToDo</h2>
 	
-	<form action="add.do">
+	<form action="add.do?uid=${param.uid }">
 		<select name="cname">
 			<option value="운동">운동</option>
 			<option value="건강">건강</option>

@@ -14,12 +14,14 @@ public class TAddCommand implements TCommand {
 		
 		HttpSession session = request.getSession();
 		
+		String uid = (String)session.getAttribute("uid");
 		String cname = request.getParameter("cname");
 		String content = request.getParameter("content");
 		
 		TDao dao = new TDao();
 		TDto dto = new TDto();
-		dto = dao.add(cname, content);
+		
+		dto = dao.add(uid, cname, content);
 		
 	}
 

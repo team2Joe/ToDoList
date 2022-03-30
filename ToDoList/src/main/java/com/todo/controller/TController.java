@@ -189,10 +189,12 @@ public class TController extends HttpServlet {
 		break;
 	
 		case("/uModifyForm.do"): 
-			command = new UModifyCommand();
-		command.execute(request, response);
-		viewPage ="uModifyForm.jsp";
+			command = new UProfileViewCommand();
+			command.execute(request, response);
+			viewPage ="uModifyForm.jsp";
 		break;
+		default:
+			break;
 		
 //c8e32276006d141219f8158c011434ec6b9c8e41:ToDoList/src/main/java/com/todo/controller/TController.java
 		

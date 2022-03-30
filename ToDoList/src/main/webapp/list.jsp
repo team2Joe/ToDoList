@@ -27,7 +27,7 @@
 				<br>
 				<a href="uLogout.do"><button>로그아웃</button></a>
 				<br>
-				<a href="addView.do"><button>할 일 추가</button></a>
+				<a href="addView.do?uid=${sessionScope.uid }"><button>할 일 추가</button></a>
 		</div>
 		<br>
 		<br>
@@ -35,10 +35,11 @@
 			<table >
 				<c:forEach items="${list }" var="dto">
 					<tr>
-						<td><input type="checkbox" value="${dto.content }"></td>
-						<td><input type="text" name="content" value="${dto.content }"></td>
+						<td><input type="checkbox" value="${dto.content }" ></td>
+						<td>${dto.cname }</td>
+						<td><input type="text" name="content" value="${dto.content }" readonly="readonly"></td>
 						
-						<td> <button><a href="downward.do?uid=${dto.uid }&cid=${dto.cid }">∨</a></button> <button><a href="upward.do?uid=${dto.uid }&cid=${dto.cid }">∧</a></button></td>
+						<td> <button><a href="downward.do?uid=${dto.uid }&cid=${dto.cid }" >∨</a></button> <button><a href="upward.do?uid=${dto.uid }&cid=${dto.cid }">∧</a></button></td>
 						<td>
 							<a href="contentView.do?uid=${dto.uid }&cid=${dto.cid }">수정</a>
 						</td>
