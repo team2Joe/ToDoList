@@ -12,14 +12,14 @@ public class TSearchCommand implements TCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String sel = request.getParameter("sel");
+		String cname = request.getParameter("cname");
 		String search = request.getParameter("search");
 		
 		TDao dao = new TDao();
 		
 		ArrayList<TDto> dtos = new ArrayList<TDto>();
 		
-		dtos = dao.search(sel, search);
+		dtos = dao.search(cname, search);
 		
 		request.setAttribute("list", dtos);
 	}

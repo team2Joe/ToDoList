@@ -184,23 +184,22 @@ public class TDao {
 		
 	}
 	
-	public ArrayList<TDto> search(String sel, String search){
+	public ArrayList<TDto> search(String scname, String search){
 		ArrayList<TDto> dtos = new ArrayList<TDto>();
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		String query = "select * from drawup";
-		String where = "where "+ sel + " like '" + search + "'";
-
+		String defaultQuery = "select * from drawup where content like '%" + search + "%'";
+		String query = null;
 		
 		try {
 			conn = dataSource.getConnection();
 			
 			
-			if(sel != "전체" || search == null) {
-				query += where;
+			if(search != null) {
+				query = defaultQuery;
 			}
 			
 			stmt = conn.prepareStatement(query);
