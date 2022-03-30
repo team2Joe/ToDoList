@@ -19,7 +19,7 @@ public class UModifyCommand implements TCommand {
 		String upassword =request.getParameter("upassword");
 		String uphone =request.getParameter("uphone");
 		String uquestion =request.getParameter("uquestion");
-		String uanswer =request.getParameter("unanswer");
+		String uanswer =request.getParameter("uanswer");
 		
 		
 		UDao dao = new UDao();

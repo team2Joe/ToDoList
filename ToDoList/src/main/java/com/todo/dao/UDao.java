@@ -153,12 +153,14 @@ public class UDao {
 		
 		try {
 			connection = dataSource.getConnection();
-			String query ="update todolist set uid = ?, uname=?, upassword=?, uphone=? where bId = ?";
+			String query ="update user set uname=?, upassword=?, uphone=?, uquestion = ? , uanswer = ? where uid = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, uname);
 			preparedStatement.setString(2, upassword);
 			preparedStatement.setString(3, uphone);
-			preparedStatement.setString(4, uid);	
+			preparedStatement.setString(4, uquestion);
+			preparedStatement.setString(5, uanswer);
+			preparedStatement.setString(6, uid);	
 			preparedStatement.executeUpdate();
 			
 		}catch (Exception e) {
@@ -249,6 +251,43 @@ public class UDao {
 		}
 	}
 	}
+	
+	public void uDelete(String uid) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query ="delete from user where uid = ? ";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, uid);
+
+			preparedStatement.executeUpdate();
+			
+			preparedStatement.close();
+			
+			query ="delete from drawup where uid = ? ";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, uid);
+
+			preparedStatement.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	
+		
+	}//modify
+	
 	
 	
 }

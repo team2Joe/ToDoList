@@ -46,7 +46,7 @@ function umodify() {
 			<td>
 			<button onclick="location.href='list.do'">뒤로</button>
 			<button onclick="location.href='uModifyForm.do'" >회원 정보 수정</button>
-			<button onclick="" >탈퇴</button>
+			<button onclick="location.href='udelete.do'" >탈퇴</button>
 			</td>
 			
 		</tr>

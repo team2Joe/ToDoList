@@ -11,7 +11,7 @@ public class TContentCommand implements TCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		String uid = "jennie12";
+		String uid = request.getParameter("uid");
 		String cid = request.getParameter("cid");
 		
 		TDto dto = new TDto();

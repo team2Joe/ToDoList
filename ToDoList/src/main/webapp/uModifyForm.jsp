@@ -13,22 +13,22 @@
 	<form action="uModify.do" method="post">
 		<tr>
 			<td>ID</td>
-			<td><input type="text" name="bId" size ="20" value ="${userinfo.uid}" readonly="readonly" >
+			<td><input type="text" name="uid" size ="20" value ="${userinfo.uid}" readonly="readonly" >
 	
 		</tr>
 		<tr>
 			<td>PW</td>
-			<td><input type="text" name="bId" size ="20" value ="${userinfo.upassword}"  >
+			<td><input type="text" name="upassword" size ="20" value ="${userinfo.upassword}"  >
 	
 		</tr>
 		<tr>
 			<td>PW 확인</td>
-			<td><input type="text" name="bId" size ="20" value ="${userinfo.upassword}"  >
+			<td><input type="text"  size ="20" value ="${userinfo.upassword}"  >
 	
 		</tr>
 		<tr>
 			<td>이름</td>
-			<td><input type="text" name="uName" size ="20" value ="${userinfo.uname}" >
+			<td><input type="text" name="uname" size ="20" value ="${userinfo.uname}" >
 		</td>
 		</tr>
 		<tr>
@@ -65,7 +65,7 @@
 			<td>
 			</td>
 			<td>
-				<input type="submit" value="확인">
+				<input type="submit" value="확인"> <button onclick="location.href='list.do'"> 뒤로</button>
 			</td>
 		</tr>
 	</form>

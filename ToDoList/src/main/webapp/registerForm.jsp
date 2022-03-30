@@ -100,6 +100,7 @@ function cancel() {
 			<tr>
 				<td></td>
 				<td><input type="button" value="취소" onclick="cancel()">
+				
 				<input type="button"  value="가입하기" onclick="registerCheck()"></td>
 			</tr>
 			

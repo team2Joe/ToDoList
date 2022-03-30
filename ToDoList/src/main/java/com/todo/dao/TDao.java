@@ -75,7 +75,7 @@ public class TDao {
 		return dtos;
 	}
 	
-	public void modify(String uid, String cid) {
+	public void modify(String uid, String cid,String content) {
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -85,8 +85,9 @@ public class TDao {
 			String query = "update drawup set content = ? where cid = ? and uid = ?";
 			stmt = conn.prepareStatement(query);
 			
-			stmt.setInt(1, Integer.parseInt(cid));
-			stmt.setString(2, uid);
+			stmt.setString(1, content);
+			stmt.setInt(2, Integer.parseInt(cid));
+			stmt.setString(3, uid);
 			
 			stmt.executeUpdate();
 			
@@ -115,7 +116,7 @@ public class TDao {
 		
 		try {
 			conn = dataSource.getConnection();
-			String query = "select content from drawup where uid = ? and cid = ?";
+			String query = "select * from drawup where uid = ? and cid = ?";
 		
 			stmt = conn.prepareStatement(query);
 			
@@ -190,9 +191,14 @@ public class TDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
-		
-		String defaultQuery = "select * from drawup where cname = '" + scname +"' and content like '%" + search + "%'";
+		String sub = "";
+		if(scname.equals("all")){
+			sub = "";
+		}else{
+			sub = "cname = '" + scname + "' and";
+			
+		}
+		String defaultQuery = "select * from drawup where "+ sub +" content like '%" + search + "%'";
 		String query = null;
 		
 		try {

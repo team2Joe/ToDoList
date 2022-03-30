@@ -30,6 +30,7 @@ import com.todo.command.TModifyCommand;
 import com.todo.command.TSearchCommand;
 import com.todo.command.TUpwardCommand;
 // c8e32276006d141219f8158c011434ec6b9c8e41:ToDoList/src/main/java/com/todo/controller/TController.java
+import com.todo.command.UDeleteCommand;
 
 
 @WebServlet("*.do")
@@ -175,24 +176,36 @@ public class TController extends HttpServlet {
 		case("/registercheck.do"):
 			command = new URegisterCheckCommand();
 			command.execute(request, response);
-			viewPage = "list.do";
+			System.out.println(viewPage);
+			viewPage = "login.do";
+			System.out.println(viewPage);
+			break;
 			
 		case("/uProfileview.do"):
 			command = new UProfileViewCommand();
 			command.execute(request, response);
 			viewPage = "uProfileview.jsp";
-		break;
+			break;
 		case("/uModify.do"): 
 			command = new UModifyCommand();
 			command.execute(request, response);
 			viewPage ="list.do";
-		break;
+			break;
 	
 		case("/uModifyForm.do"): 
 			command = new UProfileViewCommand();
 			command.execute(request, response);
 			viewPage ="uModifyForm.jsp";
-		break;
+			break;
+		case("/udelete.do"):
+			command = new UDeleteCommand();
+			command.execute(request, response);
+			viewPage ="main.do";
+			
+		case("/uLogout.do"):
+			session.invalidate();
+			viewPage = "main.do";
+			break;
 		default:
 			break;
 		

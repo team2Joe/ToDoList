@@ -31,8 +31,8 @@
 		<br>	
 		<br>	
 		<br>	
-	<input type="button" value="Sing In" onclick="login()">
-	<input type="button" value="Sing up" onclick="register()">
+	<input type="button" value="Sign in" onclick="login()">
+	<input type="button" value="Sign up" onclick="register()">
 		
 		
 		
