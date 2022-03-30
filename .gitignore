@@ -6,7 +6,7 @@
 
 ### Eclipse ###
 ./Servers
-Servers/*
+Servers/
 
 
 .metadata
