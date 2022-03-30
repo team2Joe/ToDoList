@@ -32,10 +32,10 @@ import com.todo.command.TUpwardCommand;
 
 
 @WebServlet("*.do")
-public class kteTController extends HttpServlet {
+public class TController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public kteTController() {
+    public TController() {
     	super();
     }
 
@@ -62,7 +62,6 @@ public class kteTController extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		
-		String zero = "0";
 		
 		Sharevar sharevar = new Sharevar();
 		
@@ -154,7 +153,7 @@ public class kteTController extends HttpServlet {
 			break;
 		
 		//login check!!!
-		case("/loginheck.do"):
+		case("/logincheck.do"):
 			command = new ULoginCheckCommand();
 			System.out.println("hello");
 			command.execute(request, response);
@@ -175,7 +174,7 @@ public class kteTController extends HttpServlet {
 		case("/uProfileview.do"):
 			command = new UProfileViewCommand();
 			command.execute(request, response);
-			viewPage = "uProfileView.jsp";
+			viewPage = "uProfileview.jsp";
 		break;
 		case("/uModify.do"): 
 			command = new UModifyCommand();

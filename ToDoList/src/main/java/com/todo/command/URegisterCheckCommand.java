@@ -3,6 +3,7 @@ package com.todo.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.todo.dao.UDao;
 import com.todo.dao.Uyoung_UDao;
 
 public class URegisterCheckCommand implements TCommand {
@@ -16,8 +17,9 @@ public class URegisterCheckCommand implements TCommand {
 		String uquestion = request.getParameter("uquestion");
 		String uanswer = request.getParameter("uanswer");
 		
-		Uyoung_UDao dao = new Uyoung_UDao();
+		UDao dao = new UDao();
 		dao.check(uid, upassword, uname, uphone, uquestion, uanswer);
+		
 	}
 
 }

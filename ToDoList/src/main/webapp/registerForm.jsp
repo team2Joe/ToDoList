@@ -24,14 +24,11 @@ function registerCheck() {
 		alert("비밀번호 확인창을 입력해주세요.")
 		form.upassword.focus();
 		return false;
-	}else if(form.upassword != "" || form.upasswordcheck != "") {
-        if (form.upassword == form.upasswordcheck) {
-            return false;
-        } else {
+	}else if(form.upassword.value != form.upasswordcheck.value) {
            alert("비밀번호가 서로 일치 하지 않습니다.")
-           form.upasswordchenk.focus();
-        }
-		return false;
+           form.upasswordcheck.focus();
+			return false;
+        
 	}else if(form.uname.value == ""){
 		alert("이름을 입력해주세요.")
 		form.upassword.focus();

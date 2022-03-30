@@ -177,6 +177,77 @@ public class UDao {
 		
 	}//modify
 	
+	//Logincheck
+	public int loginCheck(String uid, String upassword) {
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		int result = 0;
+	
+	try {
+		connection = dataSource.getConnection();
+		String query = "select count(*) from user where uid = ? and upassword = ?";
+		preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setString(1, uid);
+		preparedStatement.setString(2, upassword);
+		rs = preparedStatement.executeQuery();
+		while(rs.next()) {
+			
+			result = rs.getInt(1);
+		}
+		
+		
+		
+		System.out.println("success" + result);
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+		System.out.println("fail" + result);
+	}finally {
+		try {
+			if(preparedStatement != null) preparedStatement.close();
+			if(connection != null) connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+		return result;
+	}
+	
+	
+
+	public void check(String uid, String upassword, String uname, String uphone, String uquestion, String uanswer) {
+		// TODO Auto-generated method stub
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+	
+	try {
+		connection = dataSource.getConnection();
+		String query = "insert into user (uid, upassword, uname, uphone, uquestion, uanswer) values (?,?,?,?,?,?)";
+		preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setString(1, uid);
+		preparedStatement.setString(2, upassword);
+		preparedStatement.setString(3, uname);
+		preparedStatement.setString(4, uphone);
+		preparedStatement.setString(5, uquestion);
+		preparedStatement.setString(6, uanswer);
+	
+		
+		preparedStatement.executeUpdate();
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally {
+		try {
+			if(preparedStatement != null) preparedStatement.close();
+			if(connection != null) connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	}
 	
 	
 }
