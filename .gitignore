@@ -5,6 +5,8 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse,macos,windows
 
 ### Eclipse ###
+
+
 .metadata
 bin/
 tmp/

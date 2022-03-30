@@ -11,6 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.todo.command.TAddCommand;
 import com.todo.command.TCommand;
+
+// HEAD:ToDoList/src/main/java/com/todo/controller/kteTController.java
+import com.todo.command.UFindIdCommand;
+import com.todo.command.UFindPwCommand;
+import com.todo.share.Sharevar;
+
 import com.todo.command.TContentCommand;
 import com.todo.command.TDeleteCommand;
 import com.todo.command.TDownwardCommand;
@@ -18,13 +24,14 @@ import com.todo.command.TListCommand;
 import com.todo.command.TModifyCommand;
 import com.todo.command.TSearchCommand;
 import com.todo.command.TUpwardCommand;
+// c8e32276006d141219f8158c011434ec6b9c8e41:ToDoList/src/main/java/com/todo/controller/TController.java
 
 
 @WebServlet("*.do")
-public class TController extends HttpServlet {
+public class kteTController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public TController() {
+    public kteTController() {
     	super();
     }
 
@@ -51,9 +58,41 @@ public class TController extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		
+		String zero = "0";
+		
+		Sharevar sharevar = new Sharevar();
+		
+		
+// HEAD:ToDoList/src/main/java/com/todo/controller/kteTController.java
+		
+		
 		switch(com) {
-		
-		
+		case "/uFindIdForm.do":
+			viewPage = "uFindIdForm.jsp";
+			break;
+		case "/uFindId.do":
+			command = new UFindIdCommand();
+			command.execute(request, response);
+			viewPage = sharevar.findidviewpage;
+			break;
+		case "/uFindPwForm.do":
+			viewPage = "uFindPwForm.jsp";
+			break;
+		case "/uFindPw.do":
+			command = new UFindPwCommand();
+			command.execute(request, response);
+			viewPage = sharevar.findpwviewpage;
+			break;
+		case "/uFoundId.do":
+			viewPage = "uFoundId.jsp";
+			break;
+		case "/uFoundPw.do":
+			viewPage = "uFoundPw.jsp";
+			break;
+		case "/uNotFoundPw.do":
+			viewPage = "/uFindPwForm.do";
+			break;
+	
 		case("/list.do"):
 			command = new TListCommand();
 			command.execute(request, response);
@@ -102,9 +141,12 @@ public class TController extends HttpServlet {
 			viewPage = "list.do";
 			break;
 		
+//c8e32276006d141219f8158c011434ec6b9c8e41:ToDoList/src/main/java/com/todo/controller/TController.java
 		
-			
 		}
+		
+		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 		
