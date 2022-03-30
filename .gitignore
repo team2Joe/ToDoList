@@ -5,8 +5,9 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse,macos,windows
 
 ### Eclipse ###
-./Servers
 Servers/
+
+Servers/Tomcat v8.5 Server at localhost-config/
 
 
 .metadata

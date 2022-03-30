@@ -27,8 +27,7 @@
     -->
       
       
-      
-      
+     
     	<Resource
 		
 		name = "jdbc/todolist" 
